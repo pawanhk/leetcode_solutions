@@ -1,0 +1,21 @@
+#1 Two Sum optimal solution 
+
+language: Python
+Runtime: O(n)
+Space: O(n)
+
+Code:
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+       # set up the hash map to track the complements  
+       hashNums = {}
+       for i, num in enumerate(nums):
+            complement = target - num 
+            if complement in hashNums:
+                return [hashNums[complement],i] 
+            hashNums[num] = i
+       return [] 
+
+Approach:
+Single hash pass, go through the nums array and create a compliment for each of the nums, search the dict to see if the required 
+compliment already exists, if it does return. If nothing is found just return empty 
