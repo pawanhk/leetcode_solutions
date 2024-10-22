@@ -1,0 +1,43 @@
+My inital solution:
+
+class Solution:
+    def hasDuplicate(self, nums: List[int]) -> bool:
+        new_nums = []
+        for i in nums:
+            for j in new_nums:
+                if(i==j):
+                    return True
+            new_nums.append(i)
+        return False
+        
+
+My solution with hash map 
+
+class Solution:
+    def hasDuplicate(self, nums: List[int]) -> bool:
+        # create a dict 
+        new_dict = {}
+        # add to the dict 
+        for i in range(0,len(nums)):
+            if(nums[i] in new_dict.values()):
+                return True
+            new_dict[i] = nums[i]
+        return False
+        
+
+Optimized Solution - set instead 
+
+class Solution:
+    def hasDuplicate(self, nums: List[int]) -> bool:
+        seen = set()
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+        return False
+        
+
+Best Solution -- set convert and then compare 
+class Solution:
+    def hasDuplicate(self, nums: List[int]) -> bool:
+        return len(set(nums)) < len(nums)
